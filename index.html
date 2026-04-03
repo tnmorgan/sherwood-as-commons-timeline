@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sherwood Forest — A History of Commons & Conflict</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..700&family=Source+Sans+3:wght@300..700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo-lockup">
+        <svg class="logo-icon" aria-label="Sherwood Forest oak tree logo" width="42" height="42" viewBox="0 0 42 42" fill="none">
+          <path d="M21 38V22" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M21 22C21 22 14 18 14 12C14 7.6 17 4 21 4C25 4 28 7.6 28 12C28 18 21 22 21 22Z" fill="currentColor" opacity="0.9"/>
+          <path d="M21 28C21 28 11 23 11 15C11 10 15 7 21 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+          <path d="M21 30C21 30 31 25 31 17C31 12 27 9 21 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+          <line x1="14" y1="38" x2="28" y2="38" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>
+        </svg>
+        <div class="logo-text">
+          <span class="logo-title">Sherwood Forest</span>
+          <span class="logo-sub">Commons, Crown &amp; Conflict · 958–2024</span>
+        </div>
+      </div>
+      <div class="header-controls">
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch to light mode" title="Toggle theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-inner">
+      <div class="hero-badge">Interactive History Dashboard</div>
+      <h1 class="hero-title">A Thousand Years of<br><em>Forest, Commons &amp; Enclosure</em></h1>
+      <p class="hero-desc">From Norman royal hunting ground to contested medieval commons, from Georgian Dukeries enclosure to 21st-century rewilding — trace Sherwood Forest's long conflict between common rights and private power.</p>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">1,000+</span><span class="stat-label">Years of History</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-num">450,000</span><span class="stat-label">Acres at Peak (13th c.)</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-num">~1%</span><span class="stat-label">Remains Today</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-num">1,000+</span><span class="stat-label">Ancient Oaks Surviving</span></div>
+      </div>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- MAP SECTION -->
+  <section class="map-section" id="map">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">Sherwood's Shrinking Footprint</h2>
+        <p class="section-desc">At its medieval peak, Sherwood covered roughly 100,000 acres — about a fifth of Nottinghamshire. Today, the National Nature Reserve covers barely 450 hectares of ancient woodland.</p>
+      </div>
+      <div class="map-wrapper">
+        <div class="map-canvas" id="mapCanvas">
+          <svg viewBox="0 0 560 520" class="forest-map" aria-label="Map showing Sherwood Forest's historical extent and key sites">
+            <defs>
+              <filter id="lbl-shadow" x="-10%" y="-20%" width="120%" height="140%">
+                <feFlood flood-color="var(--color-surface)" flood-opacity="0.85" result="bg"/>
+                <feMerge><feMergeNode in="bg"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+
+            <!-- County background -->
+            <rect class="county-bg" x="20" y="20" width="340" height="460" rx="12"/>
+
+            <!-- River Trent -->
+            <path class="river" d="M360 400 Q310 415 265 407 Q215 397 170 407 Q130 415 20 405"/>
+            <text class="river-label" x="175" y="432" text-anchor="middle">River Trent</text>
+
+            <!-- Medieval forest extent -->
+            <path class="forest-historical" d="M60 60 L330 60 L345 95 L355 170 L348 255 L335 305 L300 335 L95 335 L65 305 L52 255 L48 170 L55 95 Z" />
+
+            <!-- NNR modern remnant — small green patch -->
+            <rect class="forest-modern" x="164" y="168" width="56" height="52" rx="8"/>
+            <text class="forest-label-mod" x="192" y="199" text-anchor="middle">NNR</text>
+
+            <!-- ── LABELS on the right side panel (x 380+) ──────────── -->
+            <!-- Medieval label -->
+            <line x1="348" y1="170" x2="370" y2="120" stroke="var(--color-primary)" stroke-width="1" opacity="0.5"/>
+            <text class="forest-label-hist" x="375" y="108" text-anchor="start">Medieval</text>
+            <text class="forest-label-hist" x="375" y="122" text-anchor="start">Extent</text>
+            <text class="forest-label-hist-sub" x="375" y="136" text-anchor="start">~100k acres</text>
+
+            <!-- NNR label callout -->
+            <line x1="220" y1="168" x2="375" y2="155" stroke="var(--color-primary)" stroke-width="1" opacity="0.5"/>
+            <text class="major-oak-label" x="375" y="154" text-anchor="start">Modern NNR</text>
+            <text class="forest-label-hist-sub" x="375" y="167" text-anchor="start">~450 ha</text>
+
+            <!-- ── LOCATION DOTS (spaced out vertically on map) ──── -->
+            <!-- Worksop -->
+            <circle class="loc-dot" cx="145" cy="82" r="5"/>
+            <text class="loc-label-clear" x="153" y="87">Worksop</text>
+
+            <!-- Edwinstowe (in NNR area) -->
+            <circle class="loc-dot edwinstowe" cx="192" cy="232" r="5"/>
+            <text class="loc-label-clear" x="200" y="237">Edwinstowe</text>
+
+            <!-- Major Oak star -->
+            <circle class="loc-dot major-oak" cx="183" cy="195" r="7"/>
+            <line x1="190" y1="195" x2="375" y2="185" stroke="var(--color-accent)" stroke-width="1" opacity="0.5"/>
+            <text class="major-oak-label" x="375" y="184" text-anchor="start">Major Oak</text>
+            <text class="forest-label-hist-sub" x="375" y="197" text-anchor="start">~900 yrs old</text>
+
+            <!-- Mansfield -->
+            <circle class="loc-dot" cx="195" cy="290" r="5"/>
+            <text class="loc-label-clear" x="203" y="295">Mansfield</text>
+
+            <!-- Nottingham -->
+            <circle class="loc-dot nottingham" cx="235" cy="365" r="6"/>
+            <text class="loc-label-clear" x="243" y="370">Nottingham</text>
+
+            <!-- ── DUKERIES callout -->
+            <line x1="170" y1="200" x2="375" y2="220" stroke="var(--color-accent)" stroke-width="1" opacity="0.4"/>
+            <text class="estate-label-side" x="375" y="218">The Dukeries</text>
+            <text class="forest-label-hist-sub" x="375" y="232">Thoresby, Welbeck,</text>
+            <text class="forest-label-hist-sub" x="375" y="244">Clumber, Rufford,</text>
+            <text class="forest-label-hist-sub" x="375" y="256">Newstead estates</text>
+
+            <!-- Coal belt callout -->
+            <line x1="100" y1="300" x2="375" y2="275" stroke="#777" stroke-width="1" opacity="0.4"/>
+            <text class="coal-label-side" x="375" y="274">⛏ Coal Belt</text>
+            <text class="forest-label-hist-sub" x="375" y="287">19th–20th c.</text>
+
+            <!-- ── Legend ──────────────────────────────────────────── -->
+            <rect x="22" y="370" width="200" height="68" rx="6" fill="var(--color-surface)" opacity="0.85"/>
+            <rect x="30" y="380" width="12" height="9" class="legend-swatch forest-historical-swatch" rx="2"/>
+            <text class="legend-text" x="46" y="388">Medieval forest extent</text>
+            <rect x="30" y="395" width="12" height="9" class="legend-swatch modern-swatch" rx="2"/>
+            <text class="legend-text" x="46" y="403">Modern NNR remnant</text>
+            <circle cx="35" cy="416" r="4" fill="var(--color-accent)"/>
+            <text class="legend-text" x="46" y="420">Key location</text>
+            <circle cx="35" cy="430" r="5" fill="var(--color-primary)"/>
+            <text class="legend-text" x="46" y="434">Major Oak / Nottingham</text>
+
+            <!-- North arrow -->
+            <g transform="translate(340, 40)">
+              <polygon points="0,-11 -4,5 0,2 4,5" fill="currentColor" opacity="0.7"/>
+              <text class="north-label" x="0" y="18" text-anchor="middle">N</text>
+            </g>
+          </svg>
+        </div>
+        <div class="map-info-panel">
+          <h3>Key Sites</h3>
+          <div class="map-info-list">
+            <div class="map-info-item">
+              <span class="map-dot dot-oak"></span>
+              <div>
+                <strong>Major Oak</strong>
+                <span>~800–1,000 year old pedunculate oak; landmark of the Birklands remnant and tourist center</span>
+              </div>
+            </div>
+            <div class="map-info-item">
+              <span class="map-dot dot-edwinstowe"></span>
+              <div>
+                <strong>Edwinstowe</strong>
+                <span>Named for King Edwin of Northumbria (d. 633); center of customary poor rights to firewood and ferns through the 18th century</span>
+              </div>
+            </div>
+            <div class="map-info-item">
+              <span class="map-dot dot-nottingham"></span>
+              <div>
+                <strong>Nottingham Castle</strong>
+                <span>Seat of the Sheriff of Nottingham; administrative hub of Forest Law enforcement</span>
+              </div>
+            </div>
+            <div class="map-info-item">
+              <span class="map-dot dot-dukeries"></span>
+              <div>
+                <strong>The Dukeries</strong>
+                <span>Thoresby, Welbeck, Clumber, Rufford, and Newstead — aristocratic estates carved from Crown land by the 18th century, extinguishing common rights</span>
+              </div>
+            </div>
+            <div class="map-info-item">
+              <span class="map-dot dot-coal"></span>
+              <div>
+                <strong>Coal Belt</strong>
+                <span>19th–20th century collieries drove towns into forest margins; mining subsidence and industrial rail cut through ancient woodland</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE CONTROLS -->
+  <section class="timeline-section" id="timeline">
+    <div class="section-container">
+      <div class="timeline-header">
+        <div class="section-header">
+          <h2 class="section-title">Timeline of Events</h2>
+          <p class="section-desc">Browse over a millennium of history — from Norman Forest Law to 21st-century rewilding. Filter by era, theme, or conflict type.</p>
+        </div>
+        <div class="controls-row">
+          <div class="filter-group">
+            <span class="filter-label">Filter by theme:</span>
+            <div class="filter-pills" id="filterPills">
+              <button class="pill active" data-filter="all">All</button>
+              <button class="pill" data-filter="royal">Royal &amp; Crown</button>
+              <button class="pill" data-filter="commons">Commons &amp; Rights</button>
+              <button class="pill" data-filter="robin-hood">Robin Hood Lore</button>
+              <button class="pill" data-filter="enclosure">Enclosure</button>
+              <button class="pill" data-filter="industry">Industry</button>
+              <button class="pill" data-filter="conservation">Conservation</button>
+            </div>
+          </div>
+          <div class="sort-group">
+            <span class="filter-label">Sort:</span>
+            <button class="sort-btn active" id="sortAsc" title="Oldest first">↑ Oldest first</button>
+            <button class="sort-btn" id="sortDesc" title="Newest first">↓ Newest first</button>
+          </div>
+        </div>
+        <!-- Era scrubber -->
+        <div class="era-bar" id="eraBar">
+          <button class="era-btn active" data-era="all">All Eras</button>
+          <button class="era-btn" data-era="saxon">Saxon<br><small>958–1066</small></button>
+          <button class="era-btn" data-era="norman">Norman<br><small>1066–1216</small></button>
+          <button class="era-btn" data-era="medieval">Medieval<br><small>1217–1485</small></button>
+          <button class="era-btn" data-era="tudor">Tudor–Stuart<br><small>1485–1700</small></button>
+          <button class="era-btn" data-era="georgian">Georgian<br><small>1700–1837</small></button>
+          <button class="era-btn" data-era="victorian">Victorian–Modern<br><small>1837–2000</small></button>
+          <button class="era-btn" data-era="contemporary">Contemporary<br><small>2000–present</small></button>
+        </div>
+      </div>
+
+      <!-- Event count -->
+      <div class="event-count" id="eventCount">Showing <strong id="countNum">0</strong> events</div>
+
+      <!-- TIMELINE -->
+      <div class="timeline" id="timelineContainer" role="list" aria-label="Timeline of Sherwood Forest events">
+        <!-- JS rendered -->
+      </div>
+
+      <div class="no-results" id="noResults" hidden>
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <p>No events match the current filters. Try a different combination.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THEMES DEEP-DIVE -->
+  <section class="themes-section" id="themes">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">The Central Conflict</h2>
+        <p class="section-desc">Sherwood's history is a long struggle between overlapping claims — royal prerogative, aristocratic property, customary commons, and popular myth.</p>
+      </div>
+      <div class="themes-grid">
+        <div class="theme-card">
+          <div class="theme-icon theme-icon-royal">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 19h20M4 19V9l8-6 8 6v10"/><path d="M9 19V13h6v6"/></svg>
+          </div>
+          <h3>Forest Law &amp; Royal Power</h3>
+          <p>After 1066, Norman kings imposed a brutal Forest Law across a fifth of England. Sherwood's deer and timber were <em>res nullius</em> made royal — poaching meant blinding, castration, or death. The forest courts at Edwinstowe ran for centuries. When barons finally broke the king's will at Runnymede in 1215, forest abuses were a central grievance: Magna Carta included forest clauses, followed in 1217 by a dedicated Charter of the Forest.</p>
+          <div class="theme-citation"><a href="https://sherwoodforesthistory.blogspot.com/2012/10/magna-carta-forest-charter-and-sherwood.html" target="_blank" rel="noopener">Sherwood Forest History Blog</a></div>
+        </div>
+        <div class="theme-card">
+          <div class="theme-icon theme-icon-robin">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>Robin Hood &amp; the Sheriff</h3>
+          <p>The Robin Hood ballads (earliest written reference, c. 1377 in <em>Piers Plowman</em>) encode real grievances. Sheriffs collected taxes, enforced forest law, and frequently extorted the poor. Robin's "steal from the rich, give to the poor" is a folk memory of the dispossession that Forest Law created. The Sheriff of Nottingham embodies lawful-but-corrupt authority — not a villain outside the law, but the law itself abused.</p>
+          <div class="theme-citation"><a href="https://www.battlemerchant.com/en/blog/robin-hood-myth-and-reality-of-a-medieval-folk-hero" target="_blank" rel="noopener">Robin Hood: Myth &amp; Reality</a></div>
+        </div>
+        <div class="theme-card">
+          <div class="theme-icon theme-icon-commons">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+          </div>
+          <h3>Customary Commons</h3>
+          <p>The commons were never free-for-all — they were intensely local systems of entitlement. Edwinstowe's poor exercised rights of <em>firebote</em> (firewood collection), gathering ferns to burn for soap-making lye, gleaning underwood, and feeding pigs on acorns. These rights, confirmed by custom and practice across generations, were the economic survival of the forest poor. They coexisted uneasily with Forest Law, persisting through the medieval period and into the 18th century.</p>
+          <div class="theme-citation"><a href="https://magnacarta800th.com/papers/forests-the-magna-carta-and-the-new-commons-some-thoughts-for-the-forest-panel/" target="_blank" rel="noopener">Magna Carta 800th Trust</a></div>
+        </div>
+        <div class="theme-card">
+          <div class="theme-icon theme-icon-enclosure">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+          </div>
+          <h3>Enclosure &amp; Dispossession</h3>
+          <p>By the 18th century, Crown land in Sherwood had been sold or gifted to nobles who created the "Dukeries" — Thoresby, Welbeck, Clumber, Rufford, and Newstead estates. Georgian "improvement" meant enclosure: common grazing land fenced off, customary rights extinguished, cottagers evicted. By 1830, even the last Crown lands at Bilhaugh and Birklands were sold. The 1818 Disafforestation Act formally ended Sherwood's status as a royal forest, completing a centuries-long privatisation.</p>
+          <div class="theme-citation"><a href="https://www.nottinghamshire.gov.uk/culture-leisure/country-parks/history-of-sherwood-forest-robin-hood-and-major-oak" target="_blank" rel="noopener">Nottinghamshire County Council</a></div>
+        </div>
+        <div class="theme-card">
+          <div class="theme-icon theme-icon-industry">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 20h20M5 20V10l7-7 7 7v10"/><path d="M9 20v-5h6v5"/><path d="M12 3v4"/></svg>
+          </div>
+          <h3>Industry &amp; Shrinkage</h3>
+          <p>Industrialisation hit Sherwood from multiple directions: naval timber demands stripped mature oaks; coal mining opened the east Nottinghamshire coalfield, bringing colliery towns onto the forest margins; railways cut lines through woodland; Victorian urban expansion from Nottingham, Mansfield, and Worksop consumed the edges. WWI and WWII brought military requisition, ammunition stores, and prisoner-of-war camps. Softwood conifer plantations replaced native oak woodland in the 20th century under Forestry Commission management.</p>
+          <div class="theme-citation"><a href="https://edwinstowehistory.org.uk/local-history/sherwood-forest/" target="_blank" rel="noopener">Edwinstowe Historical Society</a></div>
+        </div>
+        <div class="theme-card">
+          <div class="theme-icon theme-icon-conservation">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22c0 0-8-6-8-13a8 8 0 0 1 16 0c0 7-8 13-8 13z"/><path d="M12 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+          </div>
+          <h3>Conservation &amp; Rewilding</h3>
+          <p>Since the 1970s, recognition of Sherwood's ecological uniqueness — highest density of ancient trees in Europe — has driven conservation. Designated SSSI in 1981 and National Nature Reserve in 2002, the remnant 450 ha Birklands/Bilhaugh complex holds over 1,000 veteran oaks. The Sherwood Forest Trust and partners are leading replanting and heathland restoration, removing conifer plantations and working toward a more ecologically connected landscape. The 2007 Major Oak replanting symbolised this renewal.</p>
+          <div class="theme-citation"><a href="http://www.eakringbirds.com/eakringbirds6/sherwoodforestinvertebrates.htm" target="_blank" rel="noopener">Eakring Birds – Sherwood NNR</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Sources: <a href="https://edwinstowehistory.org.uk/local-history/sherwood-forest/" target="_blank" rel="noopener">Edwinstowe Historical Society</a> · <a href="https://sherwoodforesthistory.blogspot.com/" target="_blank" rel="noopener">Sherwood Forest History Blog</a> · <a href="https://www.nottinghamshire.gov.uk/culture-leisure/country-parks/history-of-sherwood-forest-robin-hood-and-major-oak" target="_blank" rel="noopener">Nottinghamshire County Council</a> · <a href="https://magnacarta800th.com/papers/forests-the-magna-carta-and-the-new-commons-some-thoughts-for-the-forest-panel/" target="_blank" rel="noopener">Magna Carta 800th Trust</a> · <a href="http://www.nottshistory.org.uk/articles/tts/tts1946/sherwood1.htm" target="_blank" rel="noopener">Nottinghamshire History</a> · <a href="https://www.historic-uk.com/HistoryMagazine/DestinationsUK/Sherwood-Forest/" target="_blank" rel="noopener">Historic UK</a></p>
+      <p class="footer-note">Interactive dashboard for research and educational use.</p>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
